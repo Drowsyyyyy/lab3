@@ -4,19 +4,30 @@ public class ArrayExamples {
 
   // Changes the input array to be in reversed order
   static void reverseInPlace(int[] arr) {
+    int[] keep = new int[arr.length];
+
+    for(int i = 0; i<arr.length; i++) {
+      keep[i] = arr[i];
+    }
+
     for(int i = 0; i < arr.length; i += 1) {
-      arr[i] = arr[arr.length - i - 1];
+
+      arr[i] = keep[arr.length - i - 1];
     }
   }
 
   // Returns a *new* array with all the elements of the input array in reversed
   // order
   static int[] reversed(int[] arr) {
-    int[] newArray = new int[arr.length];
-    for(int i = 0; i < arr.length; i += 1) {
-      arr[i] = newArray[arr.length - i - 1];
+    int[] keep = new int[arr.length];
+    
+    for(int i = 0; i<arr.length; i++) {
+      keep[i] = arr[i];
     }
-    return arr;
+    for(int i = 0; i < arr.length; i += 1) {
+      keep[i] = arr[arr.length - i - 1];
+    }
+    return keep;
   }
 
   // Averages the numbers in the array (takes the mean), but leaves out the
