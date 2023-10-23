@@ -35,14 +35,21 @@ public class ArrayExamples {
   // 1 element in the array
   static double averageWithoutLowest(double[] arr) {
     if(arr.length < 2) { return 0.0; }
-    double lowest = arr[0];
-    for(double num: arr) {
-      if(num < lowest) { lowest = num; }
+    for(int i = 0; i<arr.length; i++) {
+      for(int j = i+1; j<arr.length; j++) {
+        double temp = 0.0;
+        if(arr[i] > arr[j]) {
+          temp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = temp;
+        }
+      }
     }
     double sum = 0;
     for(double num: arr) {
-      if(num != lowest) { sum += num; }
+      sum += num;
     }
+    sum -= arr[0];
     return sum / (arr.length - 1);
   }
 
